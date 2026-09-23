@@ -1,0 +1,9 @@
+{
+  "event_id": "092108-009-sample-001",
+  "event_type": "GROUP_CONFIRMED",
+  "aggregate_type": "student_group",
+  "aggregate_id": "study_tour_lab_orchestration-001",
+  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "version": 1,
+  "summary": "登记研学实操资源编排的首条领域记录"
+}
