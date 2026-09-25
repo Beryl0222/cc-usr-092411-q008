@@ -19,10 +19,16 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "ACTIVITY_DECLARED",
+        "STUDENT_FLAGGED",
         "GROUP_CONFIRMED",
         "RESOURCE_ALLOCATED",
+        "RESOURCE_IN_TRANSIT",
+        "SAFETY_OVERRIDE_SIGNED",
         "ACTIVITY_STARTED",
+        "CONSUMABLE_CONSUMED",
         "ITINERARY_REVISED",
+        "WAITLIST_PROMOTED",
         "EVIDENCE_ACCEPTED"
       ]
     },

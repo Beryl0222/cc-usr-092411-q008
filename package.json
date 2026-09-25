@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "领域事件基础校验",
+  "description": "研学实操资源编排：事件确定性重放",
+  "bin": {
+    "study-tour-replay": "src/replay.js"
+  },
   "scripts": {
     "test": "node --test",
-    "build": "node --check src/validator.js"
+    "build": "node --check src/validator.js && node --check src/engine.js && node --check src/checkpoint.js && node --check src/replay.js",
+    "replay:sample": "node src/replay.js data/multi-venue-delay.json"
   }
 }

@@ -1,0 +1,566 @@
+{
+  "stream_id": "multi-venue-delay-2026-09-25",
+  "description": "多馆延误联动事件流：A馆延迟开放、B馆分流、在途显微镜、高风险学生替代签署、公平候补、耗材消耗与一次性返还、回执重传与异文暂停。",
+  "events": [
+    {
+      "event_id": "EVT-001",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1",
+      "occurred_at": "2026-09-25T07:30:00+08:00",
+      "version": 1,
+      "summary": "声明活动：水样微生物观察（L3，需显微操作证，试剂A每组8件，可替代为图谱判读）",
+      "payload": {
+        "title": "水样微生物观察",
+        "declared_size": 4,
+        "skill_prerequisites": ["microscopy-cert"],
+        "consumable_batches": [{ "batch_id": "REAGENT-A", "qty_per_group": 8 }],
+        "safety_level": "L3",
+        "substitutes": ["A1-ALT"]
+      }
+    },
+    {
+      "event_id": "EVT-002",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A2",
+      "occurred_at": "2026-09-25T07:31:00+08:00",
+      "version": 1,
+      "summary": "声明活动：植物切片显微观察（L2，需显微操作证，试剂B每组6件）",
+      "payload": {
+        "title": "植物切片显微观察",
+        "declared_size": 4,
+        "skill_prerequisites": ["microscopy-cert"],
+        "consumable_batches": [{ "batch_id": "REAGENT-B", "qty_per_group": 6 }],
+        "safety_level": "L2",
+        "substitutes": []
+      }
+    },
+    {
+      "event_id": "EVT-003",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A3",
+      "occurred_at": "2026-09-25T07:32:00+08:00",
+      "version": 1,
+      "summary": "声明活动：岩石薄片观察（L2，需显微操作证，无耗材）",
+      "payload": {
+        "title": "岩石薄片观察",
+        "declared_size": 4,
+        "skill_prerequisites": ["microscopy-cert"],
+        "consumable_batches": [],
+        "safety_level": "L2",
+        "substitutes": []
+      }
+    },
+    {
+      "event_id": "EVT-004",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1-ALT",
+      "occurred_at": "2026-09-25T07:33:00+08:00",
+      "version": 1,
+      "summary": "声明替代活动：水样显微图谱判读（L1，无技能前置，高风险学生替代实验）",
+      "payload": {
+        "title": "水样显微图谱判读",
+        "declared_size": 1,
+        "skill_prerequisites": [],
+        "consumable_batches": [],
+        "safety_level": "L1",
+        "substitutes": []
+      }
+    },
+    {
+      "event_id": "EVT-005",
+      "event_type": "STUDENT_FLAGGED",
+      "aggregate_type": "student",
+      "aggregate_id": "S001",
+      "occurred_at": "2026-09-25T07:40:00+08:00",
+      "version": 1,
+      "summary": "学生 S001 风险登记：未经安全教师签署只可参加 L1 活动",
+      "payload": { "risk_levels": ["L1"] }
+    },
+    {
+      "event_id": "EVT-006",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A2",
+      "occurred_at": "2026-09-25T07:45:00+08:00",
+      "version": 1,
+      "summary": "异常预占：分组尚未确认即申请场馆窗口，应被拒绝且不产生占用",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A2",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "科学A馆:2026-09-25:09:00",
+          "venue": "科学A馆",
+          "date": "2026-09-25",
+          "slot": "09:00"
+        }
+      }
+    },
+    {
+      "event_id": "EVT-007",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "G1",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "分组确认：探索一组（含高风险学生 S001）",
+      "payload": {
+        "name": "探索一组",
+        "members": [
+          { "student_id": "S001", "name": "林晓" },
+          { "student_id": "S002", "name": "陈泽" },
+          { "student_id": "S003", "name": "黄悦" },
+          { "student_id": "S004", "name": "赵启" }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-008",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "G2",
+      "occurred_at": "2026-09-25T08:05:00+08:00",
+      "version": 1,
+      "summary": "分组确认：探索二组",
+      "payload": {
+        "name": "探索二组",
+        "members": [
+          { "student_id": "S005", "name": "吴越" },
+          { "student_id": "S006", "name": "郑好" },
+          { "student_id": "S007", "name": "冯杉" },
+          { "student_id": "S008", "name": "褚明" }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-009",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "G3",
+      "occurred_at": "2026-09-25T08:10:00+08:00",
+      "version": 1,
+      "summary": "分组确认：探索三组",
+      "payload": {
+        "name": "探索三组",
+        "members": [
+          { "student_id": "S009", "name": "卫宁" },
+          { "student_id": "S010", "name": "蒋岚" },
+          { "student_id": "S011", "name": "沈柯" },
+          { "student_id": "S012", "name": "韩松" }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-010",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "G4",
+      "occurred_at": "2026-09-25T08:15:00+08:00",
+      "version": 1,
+      "summary": "分组确认：探索四组（确认最晚，用于公平候补的同优先级比较）",
+      "payload": {
+        "name": "探索四组",
+        "members": [
+          { "student_id": "S013", "name": "秦朗" },
+          { "student_id": "S014", "name": "尤静" },
+          { "student_id": "S015", "name": "许岩" },
+          { "student_id": "S016", "name": "何苗" }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-011",
+      "event_type": "SAFETY_OVERRIDE_SIGNED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "G1",
+      "occurred_at": "2026-09-25T08:20:00+08:00",
+      "version": 1,
+      "summary": "安全教师签署：S001 由水样微生物观察改做图谱判读替代实验",
+      "payload": {
+        "group_id": "G1",
+        "student_id": "S001",
+        "from_activity_id": "A1",
+        "to_activity_id": "A1-ALT",
+        "reason": "学生对染色试剂过敏，只可参加 L1 替代实验；不得为排程便利取消整组",
+        "signed_by": "安全教师-周岚"
+      }
+    },
+    {
+      "event_id": "EVT-012",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1",
+      "occurred_at": "2026-09-25T08:25:00+08:00",
+      "version": 1,
+      "summary": "确认后预占：G1 科学A馆 09:00 窗口（容量3）",
+      "payload": {
+        "group_id": "G1",
+        "activity_id": "A1",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "科学A馆:2026-09-25:09:00",
+          "venue": "科学A馆",
+          "date": "2026-09-25",
+          "slot": "09:00",
+          "capacity": 3
+        }
+      }
+    },
+    {
+      "event_id": "EVT-013",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "MIC-01",
+      "occurred_at": "2026-09-25T08:26:00+08:00",
+      "version": 1,
+      "summary": "预占显微镜 MIC-01 给 G1/A1",
+      "payload": {
+        "group_id": "G1",
+        "activity_id": "A1",
+        "resource": { "kind": "device", "resource_id": "MIC-01", "capacity": 1 }
+      }
+    },
+    {
+      "event_id": "EVT-014",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "I-01",
+      "occurred_at": "2026-09-25T08:27:00+08:00",
+      "version": 1,
+      "summary": "预占指导员 I-01 给 G1/A1",
+      "payload": {
+        "group_id": "G1",
+        "activity_id": "A1",
+        "resource": { "kind": "instructor", "resource_id": "I-01", "capacity": 1 }
+      }
+    },
+    {
+      "event_id": "EVT-015",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "REAGENT-A",
+      "occurred_at": "2026-09-25T08:28:00+08:00",
+      "version": 1,
+      "summary": "预占试剂批次 REAGENT-A 8件给 G1/A1（批次总量20）",
+      "payload": {
+        "group_id": "G1",
+        "activity_id": "A1",
+        "resource": { "kind": "consumable_batch", "batch_id": "REAGENT-A", "qty": 8, "total": 20, "label": "微生物染色试剂A" }
+      }
+    },
+    {
+      "event_id": "EVT-016",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1",
+      "occurred_at": "2026-09-25T08:30:00+08:00",
+      "version": 1,
+      "summary": "预占：G2 科学A馆 09:00 窗口（同窗口第2组）",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A1",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "科学A馆:2026-09-25:09:00",
+          "venue": "科学A馆",
+          "date": "2026-09-25",
+          "slot": "09:00",
+          "capacity": 3
+        }
+      }
+    },
+    {
+      "event_id": "EVT-017",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "REAGENT-A",
+      "occurred_at": "2026-09-25T08:31:00+08:00",
+      "version": 1,
+      "summary": "预占试剂 REAGENT-A 8件给 G2/A1（余量降至4）",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A1",
+        "resource": { "kind": "consumable_batch", "batch_id": "REAGENT-A", "qty": 8 }
+      }
+    },
+    {
+      "event_id": "EVT-018",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A3",
+      "occurred_at": "2026-09-25T08:33:00+08:00",
+      "version": 1,
+      "summary": "预占：G4 科学A馆 09:00 窗口做岩石薄片观察（同窗口第3组）",
+      "payload": {
+        "group_id": "G4",
+        "activity_id": "A3",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "科学A馆:2026-09-25:09:00",
+          "venue": "科学A馆",
+          "date": "2026-09-25",
+          "slot": "09:00",
+          "capacity": 3
+        }
+      }
+    },
+    {
+      "event_id": "EVT-019",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A2",
+      "occurred_at": "2026-09-25T08:35:00+08:00",
+      "version": 1,
+      "summary": "预占：G3 科学A馆 10:30 窗口（容量1）进行植物切片观察",
+      "payload": {
+        "group_id": "G3",
+        "activity_id": "A2",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "科学A馆:2026-09-25:10:30",
+          "venue": "科学A馆",
+          "date": "2026-09-25",
+          "slot": "10:30",
+          "capacity": 1
+        }
+      }
+    },
+    {
+      "event_id": "EVT-020",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "MIC-02",
+      "occurred_at": "2026-09-25T08:36:00+08:00",
+      "version": 1,
+      "summary": "预占显微镜 MIC-02 给 G3/A2",
+      "payload": {
+        "group_id": "G3",
+        "activity_id": "A2",
+        "resource": { "kind": "device", "resource_id": "MIC-02", "capacity": 1 }
+      }
+    },
+    {
+      "event_id": "EVT-021",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "REAGENT-B",
+      "occurred_at": "2026-09-25T08:37:00+08:00",
+      "version": 1,
+      "summary": "预占试剂 REAGENT-B 6件给 G3/A2（总量10，余量4）",
+      "payload": {
+        "group_id": "G3",
+        "activity_id": "A2",
+        "resource": { "kind": "consumable_batch", "batch_id": "REAGENT-B", "qty": 6, "total": 10, "label": "切片封装试剂B" }
+      }
+    },
+    {
+      "event_id": "EVT-022",
+      "event_type": "RESOURCE_IN_TRANSIT",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "MIC-02",
+      "occurred_at": "2026-09-25T08:40:00+08:00",
+      "version": 1,
+      "summary": "显微设备 MIC-02 仍在运输，预计 11:30 到场",
+      "payload": { "resource_id": "MIC-02", "eta": "2026-09-25T11:30:00+08:00" }
+    },
+    {
+      "event_id": "EVT-023",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1",
+      "occurred_at": "2026-09-25T08:50:00+08:00",
+      "version": 1,
+      "summary": "G2 试图在缺少显微操作证的情况下开始 A1，应被拒绝",
+      "payload": { "group_id": "G2", "activity_id": "A1", "qualified_members": [] }
+    },
+    {
+      "event_id": "EVT-024",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A1",
+      "occurred_at": "2026-09-25T09:10:00+08:00",
+      "version": 1,
+      "summary": "G1/A1 正式开始（S001 持安全教师签署参加替代实验）",
+      "payload": { "group_id": "G1", "activity_id": "A1", "qualified_members": ["microscopy-cert"] }
+    },
+    {
+      "event_id": "EVT-025",
+      "event_type": "CONSUMABLE_CONSUMED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "REAGENT-A",
+      "occurred_at": "2026-09-25T09:25:00+08:00",
+      "version": 1,
+      "summary": "G1/A1 实际消耗 REAGENT-A 8件（已开始环节，后续迁移不回补）",
+      "payload": { "group_id": "G1", "activity_id": "A1", "batch_id": "REAGENT-A", "qty": 8 }
+    },
+    {
+      "event_id": "EVT-026",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G1-01",
+      "occurred_at": "2026-09-25T09:40:00+08:00",
+      "version": 1,
+      "summary": "G1 现场回执：微生物观察记录表（含 S001 替代图谱页）",
+      "payload": { "group_id": "G1", "activity_id": "A1", "evidence_type": "observation_sheet" }
+    },
+    {
+      "event_id": "EVT-026-RETX",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G1-01",
+      "occurred_at": "2026-09-25T09:40:05+08:00",
+      "version": 1,
+      "summary": "G1 现场回执网络重传，业务编号与内容完全相同，不重复入账",
+      "payload": { "group_id": "G1", "activity_id": "A1", "evidence_type": "observation_sheet" }
+    },
+    {
+      "event_id": "EVT-027",
+      "event_type": "ITINERARY_REVISED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "revision-A-venue-delay",
+      "occurred_at": "2026-09-25T09:55:00+08:00",
+      "version": 1,
+      "summary": "科学A馆延迟开放：G1已开始保留且消耗不回补；G2(L3)与G4(L2)争10:30窗口，按安全等级公平排序入候补，不取消整组",
+      "payload": {
+        "venue": "科学A馆",
+        "reason": "上游场馆延迟开放（供电验收未完成）",
+        "closed_until": "2026-09-25T10:30:00+08:00",
+        "moves": [
+          {
+            "group_id": "G1",
+            "activity_id": "A1",
+            "from_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "09:00" },
+            "to_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "10:30" }
+          },
+          {
+            "group_id": "G2",
+            "activity_id": "A1",
+            "from_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "09:00" },
+            "to_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "10:30" }
+          },
+          {
+            "group_id": "G4",
+            "activity_id": "A3",
+            "from_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "09:00" },
+            "to_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "10:30" }
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-028",
+      "event_type": "ITINERARY_REVISED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "revision-B-venue-diversion",
+      "occurred_at": "2026-09-25T10:05:00+08:00",
+      "version": 1,
+      "summary": "B馆分流：G3 让出科学A馆10:30改至B区11:00（MIC-02仍在途写入改线原因）；队首G2自动转正，G4仍候补",
+      "payload": {
+        "venue": "自然博物馆B区",
+        "reason": "B馆分流，且 MIC-02 到场晚于A馆窗口",
+        "moves": [
+          {
+            "group_id": "G3",
+            "activity_id": "A2",
+            "from_window": { "venue": "科学A馆", "date": "2026-09-25", "slot": "10:30" },
+            "to_window": { "venue": "自然博物馆B区", "date": "2026-09-25", "slot": "11:00" }
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-029",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "REAGENT-A",
+      "occurred_at": "2026-09-25T10:08:00+08:00",
+      "version": 1,
+      "summary": "G2 候补转正后重新预占 REAGENT-A 8件（候补期间冻结已一次性返还，不发生重复返还）",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A1",
+        "resource": { "kind": "consumable_batch", "batch_id": "REAGENT-A", "qty": 8 }
+      }
+    },
+    {
+      "event_id": "EVT-030",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G2-01",
+      "occurred_at": "2026-09-25T11:05:00+08:00",
+      "version": 1,
+      "summary": "G2 现场回执：改线后微生物观察记录表",
+      "payload": { "group_id": "G2", "activity_id": "A1", "evidence_type": "observation_sheet" }
+    },
+    {
+      "event_id": "EVT-031-ALLOC",
+      "event_type": "RESOURCE_ALLOCATED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A3",
+      "occurred_at": "2026-09-25T13:50:00+08:00",
+      "version": 1,
+      "summary": "预占：G2 自然博物馆B区 14:00 窗口进行岩石薄片观察",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A3",
+        "resource": {
+          "kind": "venue_window",
+          "resource_id": "自然博物馆B区:2026-09-25:14:00",
+          "venue": "自然博物馆B区",
+          "date": "2026-09-25",
+          "slot": "14:00",
+          "capacity": 2
+        }
+      }
+    },
+    {
+      "event_id": "EVT-031",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "A3",
+      "occurred_at": "2026-09-25T14:05:00+08:00",
+      "version": 1,
+      "summary": "G2/A3 岩石薄片观察开始，声明依赖回执 EV-G2-01 作为前置学习证据",
+      "payload": {
+        "group_id": "G2",
+        "activity_id": "A3",
+        "qualified_members": ["microscopy-cert"],
+        "evidence_refs": ["EV-G2-01"]
+      }
+    },
+    {
+      "event_id": "EV-G2-01",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G2-01",
+      "occurred_at": "2026-09-25T14:20:00+08:00",
+      "version": 2,
+      "summary": "【同编号异文】G2 回执以不同内容重传：观察类型被改为 digital_image；该证据失效，依赖它的 G2/A3 暂停",
+      "payload": { "group_id": "G2", "activity_id": "A1", "evidence_type": "digital_image" }
+    },
+    {
+      "event_id": "EVT-032",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G3-01",
+      "occurred_at": "2026-09-25T11:25:00+08:00",
+      "version": 1,
+      "summary": "G3 现场回执：B区植物切片记录（MIC-02到场前先用馆内备用显微镜）",
+      "payload": { "group_id": "G3", "activity_id": "A2", "evidence_type": "observation_sheet" }
+    },
+    {
+      "event_id": "EVT-033",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "EV-G2-01",
+      "occurred_at": "2026-09-25T14:25:00+08:00",
+      "version": 1,
+      "summary": "G2 回执以原内容再次重传：异文既已发生，同编号不得恢复入账",
+      "payload": { "group_id": "G2", "activity_id": "A1", "evidence_type": "observation_sheet" }
+    }
+  ]
+}
