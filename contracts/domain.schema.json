@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "研学实操资源编排领域事件",
+  "description": "事件一旦被接收，event_id/occurred_at/version 不应原地改写；现场内容更正（如回执换版）必须产生后继记录（RECEIPT_RESOLVED）。除既有五类事件外，编排引擎还消费活动声明、资源登记、场馆延误、现场回执与安全教师替代签署。以 RESOURCE_ 开头且由引擎派生的事件具有 derived: 前缀的 event_id，重放时按触发事件确定性再生成。",
   "type": "object",
   "required": [
     "event_id",
@@ -19,19 +20,32 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "ACTIVITY_DECLARED",
+        "RESOURCE_REGISTERED",
+        "RESOURCE_STATUS_UPDATED",
         "GROUP_CONFIRMED",
         "RESOURCE_ALLOCATED",
+        "RESOURCE_RELEASED",
         "ACTIVITY_STARTED",
+        "ACTIVITY_COMPLETED",
+        "VENUE_DELAYED",
         "ITINERARY_REVISED",
+        "SLOT_WAITLISTED",
+        "SLOT_SUSPENDED",
+        "RECEIPT_RECORDED",
+        "RECEIPT_RESOLVED",
+        "ALTERNATIVE_APPROVED",
         "EVIDENCE_ACCEPTED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
-        "student_group",
         "activity_slot",
+        "student_group",
         "resource_unit",
+        "venue",
+        "receipt",
         "learning_evidence"
       ]
     },

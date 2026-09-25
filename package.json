@@ -6,6 +6,8 @@
   "description": "领域事件基础校验",
   "scripts": {
     "test": "node --test",
-    "build": "node --check src/validator.js"
+    "build": "node --check src/validator.js && node --check src/engine.js && node --check src/report.js && node --check src/checkpoint.js && node --check src/replay.js",
+    "replay": "node src/replay.js data/event-stream.json",
+    "replay:clean": "node src/replay.js data/event-stream.json --reset"
   }
 }

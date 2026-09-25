@@ -1,0 +1,652 @@
+{
+  "_comment": "多馆延误事件流（输入事件，按 offset 顺序；derived:* 事件由引擎在重放时确定性生成，不在此流中）。场景：2026-09-25，场馆A 09:50 通知延迟至13:00、场馆C 09:35 通知延迟至15:00。",
+  "events": [
+    {
+      "event_id": "evt-0001",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "mic-01",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记显微镜 mic-01（场馆A 在场）",
+      "resource_id": "mic-01",
+      "kind": "microscope",
+      "name": "A馆一号显微镜",
+      "venue_id": "venue-a",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0002",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "mic-02",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记显微镜 mic-02（运往场馆C，尚在运输）",
+      "resource_id": "mic-02",
+      "kind": "microscope",
+      "name": "C馆转运显微镜",
+      "venue_id": "venue-c",
+      "status": "in_transit"
+    },
+    {
+      "event_id": "evt-0003",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "mic-03",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记显微镜 mic-03（在场）",
+      "resource_id": "mic-03",
+      "kind": "microscope",
+      "name": "备用显微镜三号",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0004",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "mic-04",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记显微镜 mic-04（在场）",
+      "resource_id": "mic-04",
+      "kind": "microscope",
+      "name": "备用显微镜四号",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0005",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "inst-chen",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记指导员陈老师",
+      "resource_id": "inst-chen",
+      "kind": "instructor",
+      "name": "陈指导员",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0006",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "inst-lin",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记指导员林老师（可带替代观察实验）",
+      "resource_id": "inst-lin",
+      "kind": "instructor",
+      "name": "林指导员",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0007",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "inst-wang",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记指导员王老师",
+      "resource_id": "inst-wang",
+      "kind": "instructor",
+      "name": "王指导员",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0008",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "inst-zhao",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记指导员赵老师",
+      "resource_id": "inst-zhao",
+      "kind": "instructor",
+      "name": "赵指导员",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0009",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "batch-reagent-x",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记染色试剂批次（初始20份）",
+      "resource_id": "batch-reagent-x",
+      "kind": "consumable",
+      "name": "细胞染色试剂X",
+      "initial_quantity": 20
+    },
+    {
+      "event_id": "evt-0010",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "batch-slide-p",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记载玻片批次（初始12盒）",
+      "resource_id": "batch-slide-p",
+      "kind": "consumable",
+      "name": "载玻片P批",
+      "initial_quantity": 12
+    },
+    {
+      "event_id": "evt-0011",
+      "event_type": "RESOURCE_REGISTERED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "batch-stain-k",
+      "occurred_at": "2026-09-25T08:00:00+08:00",
+      "version": 1,
+      "summary": "登记C馆显微染色包批次（初始8份）",
+      "resource_id": "batch-stain-k",
+      "kind": "consumable",
+      "name": "显微染色包K",
+      "initial_quantity": 8
+    },
+    {
+      "event_id": "evt-0012",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "act-cell-staining",
+      "occurred_at": "2026-09-25T08:05:00+08:00",
+      "version": 1,
+      "summary": "声明细胞染色实验：声明人数8、技能前置 basic、安全等级 L2",
+      "activity_id": "act-cell-staining",
+      "name": "细胞染色与观察",
+      "venue_id": "venue-a",
+      "declared_headcount": 8,
+      "skill_prerequisite": "basic",
+      "safety_level": "L2",
+      "consumable_batches": [
+        { "batch_id": "batch-reagent-x", "quantity_per_group": 4 },
+        { "batch_id": "batch-slide-p", "quantity_per_group": 3 }
+      ],
+      "required_equipment": ["microscope"]
+    },
+    {
+      "event_id": "evt-0013",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "act-microscopy-c",
+      "occurred_at": "2026-09-25T08:05:00+08:00",
+      "version": 1,
+      "summary": "声明C馆显微观察：声明人数6、技能前置 intermediate、安全等级 L3",
+      "activity_id": "act-microscopy-c",
+      "name": "C馆标本显微观察",
+      "venue_id": "venue-c",
+      "declared_headcount": 6,
+      "skill_prerequisite": "intermediate",
+      "safety_level": "L3",
+      "consumable_batches": [
+        { "batch_id": "batch-stain-k", "quantity_per_group": 2 }
+      ],
+      "required_equipment": ["microscope"]
+    },
+    {
+      "event_id": "evt-0014",
+      "event_type": "ACTIVITY_DECLARED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "act-observation-alt",
+      "occurred_at": "2026-09-25T08:05:00+08:00",
+      "version": 1,
+      "summary": "声明低风险替代活动：宏观标本观察，无技能前置、安全等级 L1、不用试剂",
+      "activity_id": "act-observation-alt",
+      "name": "宏观标本观察（替代）",
+      "venue_id": "venue-b",
+      "declared_headcount": 8,
+      "skill_prerequisite": "none",
+      "safety_level": "L1",
+      "consumable_batches": [],
+      "required_equipment": []
+    },
+    {
+      "event_id": "evt-0015",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "group-g3",
+      "occurred_at": "2026-09-25T08:30:00+08:00",
+      "version": 1,
+      "summary": "丙组确认C馆显微实验（4人），mic-02 运输中，g3-s1 进入候补",
+      "group_id": "group-g3",
+      "activity_id": "act-microscopy-c",
+      "members": [
+        { "student_id": "s301", "name": "赵晓", "skill_level": "intermediate", "risk_level": "standard" },
+        { "student_id": "s302", "name": "钱进", "skill_level": "intermediate", "risk_level": "standard" },
+        { "student_id": "s303", "name": "孙岚", "skill_level": "intermediate", "risk_level": "standard" },
+        { "student_id": "s304", "name": "李沐", "skill_level": "intermediate", "risk_level": "standard" }
+      ],
+      "plan": [
+        {
+          "slot_id": "g3-s1",
+          "seq": 1,
+          "venue_id": "venue-c",
+          "window": "2026-09-25T10:00:00+08:00",
+          "resource_ids": ["mic-02", "inst-zhao"]
+        },
+        {
+          "slot_id": "g3-s2",
+          "seq": 2,
+          "venue_id": "venue-c",
+          "window": "2026-09-25T11:00:00+08:00",
+          "resource_ids": []
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0016",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "group-g1",
+      "occurred_at": "2026-09-25T08:35:00+08:00",
+      "version": 1,
+      "summary": "甲组确认A馆细胞染色（4人；s104 哮喘敏感，安全门禁标记待签署替代，整组保留）",
+      "group_id": "group-g1",
+      "activity_id": "act-cell-staining",
+      "members": [
+        { "student_id": "s101", "name": "王一", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s102", "name": "王二", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s103", "name": "王三", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s104", "name": "王四", "skill_level": "basic", "risk_level": "high", "safety_block": "哮喘/化学气雾敏感，禁做染色试剂环节" }
+      ],
+      "plan": [
+        {
+          "slot_id": "g1-s1",
+          "seq": 1,
+          "venue_id": "venue-a",
+          "window": "2026-09-25T09:00:00+08:00",
+          "resource_ids": ["mic-01", "inst-chen"]
+        },
+        {
+          "slot_id": "g1-s2",
+          "seq": 2,
+          "venue_id": "venue-a",
+          "window": "2026-09-25T10:30:00+08:00",
+          "resource_ids": ["mic-03"]
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0017",
+      "event_type": "GROUP_CONFIRMED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "group-g2",
+      "occurred_at": "2026-09-25T08:40:00+08:00",
+      "version": 1,
+      "summary": "乙组确认A馆细胞染色（4人），原排 11:30 场次",
+      "group_id": "group-g2",
+      "activity_id": "act-cell-staining",
+      "members": [
+        { "student_id": "s201", "name": "陈甲", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s202", "name": "陈乙", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s203", "name": "陈丙", "skill_level": "basic", "risk_level": "standard" },
+        { "student_id": "s204", "name": "陈丁", "skill_level": "basic", "risk_level": "standard" }
+      ],
+      "plan": [
+        {
+          "slot_id": "g2-s1",
+          "seq": 1,
+          "venue_id": "venue-a",
+          "window": "2026-09-25T11:30:00+08:00",
+          "resource_ids": ["mic-04", "inst-wang"]
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0018",
+      "event_type": "RESOURCE_STATUS_UPDATED",
+      "aggregate_type": "resource_unit",
+      "aggregate_id": "mic-02",
+      "occurred_at": "2026-09-25T08:50:00+08:00",
+      "version": 1,
+      "summary": "mic-02 运抵场馆C、检验可用，候补环节 g3-s1 自动补位",
+      "resource_id": "mic-02",
+      "status": "available"
+    },
+    {
+      "event_id": "evt-0019",
+      "event_type": "ALTERNATIVE_APPROVED",
+      "aggregate_type": "student_group",
+      "aggregate_id": "group-g1",
+      "occurred_at": "2026-09-25T08:55:00+08:00",
+      "version": 1,
+      "summary": "安全教师签署：s104 改做B馆宏观标本观察替代实验（不取消整组）",
+      "group_id": "group-g1",
+      "student_ids": ["s104"],
+      "alternative_activity_id": "act-observation-alt",
+      "safety_teacher": "teacher-an-quan",
+      "slot": {
+        "slot_id": "g1-alt-s1",
+        "seq": 1,
+        "venue_id": "venue-b",
+        "window": "2026-09-25T10:30:00+08:00",
+        "resource_ids": ["inst-lin"],
+        "prior_slot_id": "g1-s1"
+      }
+    },
+    {
+      "event_id": "evt-0020",
+      "event_type": "RECEIPT_RECORDED",
+      "aggregate_type": "receipt",
+      "aggregate_id": "rcpt-specimen-c",
+      "occurred_at": "2026-09-25T09:00:00+08:00",
+      "version": 1,
+      "summary": "C馆标本冷链送达回执（初版），g3-s2 依赖该标本",
+      "receipt_id": "rcpt-specimen-c",
+      "slot_id": "g3-s2",
+      "content_hash": "specimen-receipt-v1",
+      "payload": { "waybill": "SF-5501", "cold_chain_ok": true, "specimen_count": 6 }
+    },
+    {
+      "event_id": "evt-0021",
+      "event_type": "RECEIPT_RECORDED",
+      "aggregate_type": "receipt",
+      "aggregate_id": "rcpt-specimen-c",
+      "occurred_at": "2026-09-25T09:02:00+08:00",
+      "version": 1,
+      "summary": "现场网络重试：同一回执相同内容重传（不应重复入账）",
+      "receipt_id": "rcpt-specimen-c",
+      "slot_id": "g3-s2",
+      "content_hash": "specimen-receipt-v1",
+      "payload": { "waybill": "SF-5501", "cold_chain_ok": true, "specimen_count": 6 }
+    },
+    {
+      "event_id": "evt-0022",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-004",
+      "occurred_at": "2026-09-25T09:05:00+08:00",
+      "version": 1,
+      "summary": "丙组 g3-s2 课前预案记录与标本回执关联受理",
+      "evidence_id": "ev-004",
+      "slot_id": "g3-s2",
+      "group_id": "group-g3",
+      "kind": "pre-lab-plan",
+      "receipt_id": "rcpt-specimen-c"
+    },
+    {
+      "event_id": "evt-0023",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-s1",
+      "occurred_at": "2026-09-25T09:05:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s1 按原计划在A馆开始（替代已签署，门禁放行），试剂开始实际消耗",
+      "slot_id": "g1-s1"
+    },
+    {
+      "event_id": "evt-0029",
+      "event_type": "VENUE_DELAYED",
+      "aggregate_type": "venue",
+      "aggregate_id": "venue-c",
+      "occurred_at": "2026-09-25T09:35:00+08:00",
+      "version": 1,
+      "summary": "C馆消防复检未完成，延迟至15:00开放",
+      "venue_id": "venue-c",
+      "new_opens_at": "2026-09-25T15:00:00+08:00"
+    },
+    {
+      "event_id": "evt-0030",
+      "event_type": "ITINERARY_REVISED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "group-g3",
+      "occurred_at": "2026-09-25T09:36:00+08:00",
+      "version": 1,
+      "summary": "C馆延误：丙组未开始环节整体后移（mic-02 随组保留）",
+      "reason": "venue-c-delayed",
+      "revisions": [
+        {
+          "slot_id": "g3-s1",
+          "new_venue_id": "venue-c",
+          "new_window": "2026-09-25T15:00:00+08:00",
+          "keep_resources": ["mic-02", "inst-zhao"],
+          "reason": "venue-c-delayed"
+        },
+        {
+          "slot_id": "g3-s2",
+          "new_venue_id": "venue-c",
+          "new_window": "2026-09-25T16:00:00+08:00",
+          "reason": "venue-c-delayed"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0024",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-alt-s1",
+      "occurred_at": "2026-09-25T09:10:00+08:00",
+      "version": 1,
+      "summary": "s104 在B馆开始替代观察环节",
+      "slot_id": "g1-alt-s1"
+    },
+    {
+      "event_id": "evt-0025",
+      "event_type": "ACTIVITY_COMPLETED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-alt-s1",
+      "occurred_at": "2026-09-25T09:40:00+08:00",
+      "version": 1,
+      "summary": "替代观察环节完成",
+      "slot_id": "g1-alt-s1"
+    },
+    {
+      "event_id": "evt-0026",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-alt-01",
+      "occurred_at": "2026-09-25T09:42:00+08:00",
+      "version": 1,
+      "summary": "s104 替代实验观察记录受理",
+      "evidence_id": "ev-alt-01",
+      "slot_id": "g1-alt-s1",
+      "group_id": "group-g1",
+      "student_id": "s104",
+      "kind": "observation-sheet"
+    },
+    {
+      "event_id": "evt-0027",
+      "event_type": "ACTIVITY_COMPLETED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-s1",
+      "occurred_at": "2026-09-25T09:45:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s1 完成：延误通知前已结束，现场与消耗保留",
+      "slot_id": "g1-s1"
+    },
+    {
+      "event_id": "evt-0028",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-001",
+      "occurred_at": "2026-09-25T09:47:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s1 染色结果显微照片受理",
+      "evidence_id": "ev-001",
+      "slot_id": "g1-s1",
+      "group_id": "group-g1",
+      "kind": "microscopy-photo"
+    },
+    {
+      "event_id": "evt-0031",
+      "event_type": "VENUE_DELAYED",
+      "aggregate_type": "venue",
+      "aggregate_id": "venue-a",
+      "occurred_at": "2026-09-25T09:50:00+08:00",
+      "version": 1,
+      "summary": "A馆上一场次超时清场，延迟至13:00开放",
+      "venue_id": "venue-a",
+      "new_opens_at": "2026-09-25T13:00:00+08:00"
+    },
+    {
+      "event_id": "evt-0032",
+      "event_type": "ITINERARY_REVISED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "venue-a-reroute",
+      "occurred_at": "2026-09-25T09:52:00+08:00",
+      "version": 1,
+      "summary": "A馆延误：甲乙两组未开始环节都改到复开后首个场次13:00（同场次冲突，按确认先后公平候补）",
+      "reason": "venue-a-delayed",
+      "revisions": [
+        {
+          "slot_id": "g1-s2",
+          "new_venue_id": "venue-a",
+          "new_window": "2026-09-25T13:00:00+08:00",
+          "keep_resources": ["mic-03"],
+          "reason": "venue-a-delayed"
+        },
+        {
+          "slot_id": "g2-s1",
+          "new_venue_id": "venue-a",
+          "new_window": "2026-09-25T13:00:00+08:00",
+          "keep_resources": ["mic-04", "inst-wang"],
+          "reason": "venue-a-delayed"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0033",
+      "event_type": "ITINERARY_REVISED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-s2",
+      "occurred_at": "2026-09-25T10:00:00+08:00",
+      "version": 1,
+      "summary": "调度：甲组 g1-s2 改去未受影响的B馆13:00场次，让出A馆13:00给候补队首乙组",
+      "reason": "fair-promotion-to-backup-venue",
+      "revisions": [
+        {
+          "slot_id": "g1-s2",
+          "new_venue_id": "venue-b",
+          "new_window": "2026-09-25T13:00:00+08:00",
+          "keep_resources": ["mic-03"],
+          "reason": "fair-promotion-to-backup-venue"
+        }
+      ]
+    },
+    {
+      "event_id": "evt-0034",
+      "event_type": "RECEIPT_RECORDED",
+      "aggregate_type": "receipt",
+      "aggregate_id": "rcpt-specimen-c",
+      "occurred_at": "2026-09-25T11:30:00+08:00",
+      "version": 2,
+      "summary": "同编号回执内容变化：冷链温度报警，标本数量由6改为4，暂停依赖它的 g3-s2",
+      "receipt_id": "rcpt-specimen-c",
+      "slot_id": "g3-s2",
+      "content_hash": "specimen-receipt-v2",
+      "payload": { "waybill": "SF-5501", "cold_chain_ok": false, "specimen_count": 4, "temp_alarm": true }
+    },
+    {
+      "event_id": "evt-0035",
+      "event_type": "RECEIPT_RESOLVED",
+      "aggregate_type": "receipt",
+      "aggregate_id": "rcpt-specimen-c",
+      "occurred_at": "2026-09-25T12:10:00+08:00",
+      "version": 1,
+      "summary": "馆方核验：4份标本复检合格，确认新版回执有效，g3-s2 恢复排程",
+      "receipt_id": "rcpt-specimen-c",
+      "resolution": "confirmed_new"
+    },
+    {
+      "event_id": "evt-0036",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-s2",
+      "occurred_at": "2026-09-25T13:05:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s2 在B馆13:00场次开始",
+      "slot_id": "g1-s2"
+    },
+    {
+      "event_id": "evt-0037",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g2-s1",
+      "occurred_at": "2026-09-25T13:05:00+08:00",
+      "version": 1,
+      "summary": "乙组 g2-s1 在A馆复开后13:00场次（候补递进到位）开始",
+      "slot_id": "g2-s1"
+    },
+    {
+      "event_id": "evt-0038",
+      "event_type": "ACTIVITY_COMPLETED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g1-s2",
+      "occurred_at": "2026-09-25T13:50:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s2 在B馆完成",
+      "slot_id": "g1-s2"
+    },
+    {
+      "event_id": "evt-0039",
+      "event_type": "ACTIVITY_COMPLETED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g2-s1",
+      "occurred_at": "2026-09-25T14:00:00+08:00",
+      "version": 1,
+      "summary": "乙组 g2-s1 在A馆完成",
+      "slot_id": "g2-s1"
+    },
+    {
+      "event_id": "evt-0040",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-002",
+      "occurred_at": "2026-09-25T13:52:00+08:00",
+      "version": 1,
+      "summary": "甲组 g1-s2（改线B馆）实验记录受理，随行程修订保留",
+      "evidence_id": "ev-002",
+      "slot_id": "g1-s2",
+      "group_id": "group-g1",
+      "kind": "lab-record"
+    },
+    {
+      "event_id": "evt-0041",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-005",
+      "occurred_at": "2026-09-25T14:03:00+08:00",
+      "version": 1,
+      "summary": "乙组 g2-s1（候补递进到A馆）实验记录受理",
+      "evidence_id": "ev-005",
+      "slot_id": "g2-s1",
+      "group_id": "group-g2",
+      "kind": "lab-record"
+    },
+    {
+      "event_id": "evt-0042",
+      "event_type": "ACTIVITY_STARTED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g3-s1",
+      "occurred_at": "2026-09-25T15:05:00+08:00",
+      "version": 1,
+      "summary": "丙组 g3-s1 在C馆复开后开始",
+      "slot_id": "g3-s1"
+    },
+    {
+      "event_id": "evt-0043",
+      "event_type": "ACTIVITY_COMPLETED",
+      "aggregate_type": "activity_slot",
+      "aggregate_id": "g3-s1",
+      "occurred_at": "2026-09-25T15:50:00+08:00",
+      "version": 1,
+      "summary": "丙组 g3-s1 完成",
+      "slot_id": "g3-s1"
+    },
+    {
+      "event_id": "evt-0044",
+      "event_type": "EVIDENCE_ACCEPTED",
+      "aggregate_type": "learning_evidence",
+      "aggregate_id": "ev-003",
+      "occurred_at": "2026-09-25T15:52:00+08:00",
+      "version": 1,
+      "summary": "丙组 g3-s1（改线到15:00）显微观察记录受理",
+      "evidence_id": "ev-003",
+      "slot_id": "g3-s1",
+      "group_id": "group-g3",
+      "kind": "microscopy-photo"
+    }
+  ]
+}
